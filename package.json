@@ -1,0 +1,22 @@
+{
+  "name": "fiddles",
+  "version": "1.0.0",
+  "description": "JavaScript fiddles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/c24w/fiddles"
+  },
+  "author": "Chris Watson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c24w/fiddles/issues"
+  },
+  "homepage": "https://github.com/c24w/fiddles",
+  "devDependencies": {
+    "eslint": "^2.3.0"
+  }
+}
