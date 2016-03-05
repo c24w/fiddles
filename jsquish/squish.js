@@ -1,6 +1,6 @@
 'use strict';
 function showResult(text) {
-  window.location.replace(`data:text/plain,${encodeURI(text)}`);
+  window.location.replace(encodeURI(`data:text/plain,${text}`));
 }
 
 window.onerror = err => {
