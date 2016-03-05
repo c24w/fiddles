@@ -15,9 +15,10 @@
         83.25% { transform: rotate(4deg); }
         100% { transform: rotate(0); }
       }
-      html, body {
+      body {
         height: 100%;
         width: 100%;
+        overflow: hidden;
       }
       body:before {
         animation: wobble 1000ms infinite;
@@ -30,9 +31,6 @@
         font-family: monospace;
         white-space:pre;
         content: '/*\Asquishing\A*/';
-      }
-      body {
-        overflow: hidden;
       }
       </script>
   </head>
