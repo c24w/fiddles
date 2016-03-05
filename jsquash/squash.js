@@ -1,6 +1,6 @@
 'use strict';
 function showResult(text) {
-  window.location.replace (`data:text/plain,${encodeURI(text)}`);
+  window.location.replace(`data:text/plain,${encodeURI(text)}`);
 }
 
 window.onerror = err => {
@@ -27,13 +27,17 @@ function getScriptUrl() {
 
 $.get(getScriptUrl())
 .done(res => {
-  $.post('https://closure-compiler.appspot.com/compile', {
-    js_code: res,
-    //code_url: `https://gist.githubusercontent.com/${gist}/raw`,
-    output_format: 'text',
-    output_info: 'compiled_code',
-    compilation_level: 'SIMPLE_OPTIMIZATIONS',
-    warning_level: 'default'
+  $.post({
+    url: 'https://closure-compiler.appspot.com/compile',
+    dataType: 'text',
+    data: {
+      js_code: res,
+      //code_url: `https://gist.githubusercontent.com/${gist}/raw`,
+      output_format: 'text',
+      output_info: 'compiled_code',
+      compilation_level: 'SIMPLE_OPTIMIZATIONS',
+      warning_level: 'default'
+    }
   })
   .done(res => showResult(res))
   .fail((jqXhq, status, err) => {
