@@ -1,5 +1,6 @@
 'use strict';
-function showResult(text) {
+function showResult(title, text) {
+  $('title').text(title);
   window.location.replace(encodeURI(`data:text/plain,${text}`));
 }
 
@@ -7,7 +8,7 @@ window.onerror = err => {
   const url = `${window.location.href}`;
   const separator = new Array(url.length+1).join('-');
   const msg = `\n${err}\n\n${separator}\n${url}`;
-  showResult(msg);
+  showResult(':(', msg);
 };
 
 function assertUrlPart(part) {
@@ -39,7 +40,7 @@ $.get(getScriptUrl())
       warning_level: 'default'
     }
   })
-  .done(res => showResult(res))
+  .done(res => showResult('/* squished */', res))
   .fail((jqXhq, status, err) => {
     throw new Error(`Couldn't minify gist: ${status}, ${err}`);
   });
