@@ -11,19 +11,21 @@ window.onerror = err => {
   showResult(':(', msg);
 };
 
-function assertUrlPart(part) {
-  if (!part) {
-    const eg = `${window.location.pathname}?gist=github-username/gist-hash`;
+function assertQs(condition) {
+  if (!condition) {
+    const eg = `${window.location.pathname}?gist=github-username/gist-hash/[filename]`;
     throw new Error(`URL should point to a gist, e.g. ${eg}`);
   }
 }
 
 function getScriptUrl() {
   const qs = window.location.search.slice(1);
-  assertUrlPart(qs);
+  assertQs(qs);
   const gist = qs.split('=')[1];
-  assertUrlPart(gist);
-  return `https://gist.githubusercontent.com/${gist}/raw`;
+  assertQs(gist);
+  const gistParts = gist.split('/');
+  const file = gistParts.length === 3 ? gistParts.pop() : '';
+  return `https://gist.githubusercontent.com/${gistParts.join('/')}/raw/${file}`;
 }
 
 $.get(getScriptUrl())
