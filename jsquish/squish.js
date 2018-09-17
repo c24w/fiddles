@@ -1,7 +1,7 @@
 'use strict';
 function showResult(title, text) {
-  $('title').text(title);
-  window.location.replace(encodeURI(`data:text/plain,${text}`));
+  $('head').html(`<title>${title}</title>`);
+  $('body').html(`<pre>${text}</pre>`);
 }
 
 window.onerror = err => {
